@@ -14,6 +14,7 @@ $mensajeBienvenida = trim(ob_get_clean());
 
 <body>
     <h1><?= htmlspecialchars($mensajeBienvenida, ENT_QUOTES, 'UTF-8') ?></h1>
+    <h3>WIP | En Construcción</h3>
 </body>
 
 </html>

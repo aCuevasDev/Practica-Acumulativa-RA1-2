@@ -11,11 +11,11 @@ const APP_NAME = 'Jukebox';
 $cancion = new Cancion();
 $cancion->populate_cancion('Sesión de prueba', 'Grupo del aula', 185, 0.5, true);
 
-var_dump($cancion->dump_variables());
+var_dump($cancion->get_associative_array());
 
 $cancion2 = new Cancion();
 $cancion2->populate_cancion('<b>Demo</b>');
 
-htmlspecialchars(var_dump($cancion2->dump_variables()));
+htmlspecialchars(var_dump($cancion2->get_associative_array()));
 
 
