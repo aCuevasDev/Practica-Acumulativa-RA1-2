@@ -34,7 +34,7 @@ class Cancion
         $this->available = $available;
     }
 
-    public function get_associative_array()
+    public function get_associative_array() : array
     {
         return array('id' => $this->id, 'title' => $this->name, 'artist' => $this->author, 'category' => $this->category, 'duration' => $this->duration, 'volume' => $this->volume, 'available' => $this->available, 'src' => $this->file);
     }
