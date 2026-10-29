@@ -24,14 +24,17 @@ class Cancion
     // {
     // }
 
-    public function populate_cancion($id, $title = '', $artist = '', $duration = 0, $volume = 0, $available = true)
+    public function populate_cancion($id, $title = '', $artist = '', $duration = 0, $volume = 0, $src = '', $category = '',$available = true) : Cancion
     {
         $this->id = $id;
         $this->name = $title;
         $this->author = $artist;
         $this->duration = $duration;
         $this->volume = $volume;
+        $this->file = $src;
         $this->available = $available;
+        $this->category = $category;
+        return $this;
     }
 
     public function get_associative_array() : array
