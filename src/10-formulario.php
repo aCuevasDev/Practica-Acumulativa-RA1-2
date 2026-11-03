@@ -9,8 +9,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $src = is_string($_POST['src']) ? trim($_POST['src']) : ''; 
 }
 
-if((empty($title) || empty($artist) || empty($category)) || $category){
-    Response::send(400, 'Fields: title, artist and category must be valid and not empty')
+if((empty($title) || empty($artist) || empty($category)) || $category) {
+    Response::send(400, 'Fields: title, artist and category must be valid and not empty');
 }
 
 if(!($duration > 0 && $duration < 1800)) {
