@@ -11,9 +11,9 @@ try{
     $mariadb_name = $mariadb_service->getDatabaseName();
     $response
         ->status(200)
-        ->body('Connected to MariaDB database: ' . $mariadb_name);
+        ->body('Connected to MariaDB database: ' . $mariadb_name . '\n');
 }
-catch(Exception $e){
+catch(PDOException $e){
     $err = true;
     $response
         ->status(503)
@@ -27,9 +27,9 @@ try{
     $postgre_name = $postgre_service->getDatabaseName();
     $response
         ->status(200)
-        ->body('Connected to PostgreSQL database: ' . $postgre_name);
+        ->body('Connected to PostgreSQL database: ' . $postgre_name . '\n');
 }
-catch(Exception $e){
+catch(PDOException $e){
     $err = true;
     $response
         ->status(503)

@@ -55,7 +55,7 @@ class Response
 
         echo json_encode(
             $this->body,
-            JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE
+            JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_LINE_TERMINATORS | JSON_PRETTY_PRINT
         );
 
         exit;
