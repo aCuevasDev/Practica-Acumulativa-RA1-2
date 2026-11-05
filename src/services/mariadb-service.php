@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . "/connection-interface.php";
 class MariadbService implements Connection_interface {
     private PDO $db;
 
@@ -13,6 +13,6 @@ class MariadbService implements Connection_interface {
     }
 
     public function getDatabaseName(): string {
-        return $this->db->query('SELECT current_database()')->fetchColumn();
+        return $this->db->query('SELECT DATABASE()')->fetchColumn();
     }
 }

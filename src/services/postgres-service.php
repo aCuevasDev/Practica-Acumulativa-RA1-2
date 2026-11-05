@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/connection-interface.php";
 class PostgreService implements Connection_interface {
     private PDO $db;
 
