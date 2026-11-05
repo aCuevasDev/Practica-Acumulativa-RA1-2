@@ -12,26 +12,28 @@ services:
     #   - ./data:/var/www/html/data
     env_file:
       - .env
-  db:
+  mariadb:
     image: mariadb:11.1
     environment:
-      - MARIADB_DATABASE=${MARIADB_DATABASE}
+      - MARIADB_DATABASE=${MARIADB_NAME}
       - MARIADB_USER=${MARIADB_USER}
       - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
     volumes:
-      - db_data:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
     ports:
-      - "3306:3306"
-  db_postgres:
+      - "3307:3306"
+  postgres:
     image: postgres:16.2
     environment:
-      - POSTGRES_DB=${POSTGRES_DATABASE}
+      - POSTGRES_DB=${POSTGRES_NAME}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
 volumes:
-  db_data:
+  postgres_data:
+  mariadb_data:

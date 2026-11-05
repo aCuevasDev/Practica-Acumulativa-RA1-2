@@ -28,7 +28,10 @@ if (is_string($category)) {
     }
 }
 
-Response::send($httpCode, ['songs' => $filteredSongs]);
+Response::make()
+    ->status($httpCode)
+    ->body(['songs' => $filteredSongs])
+    ->send();
 
 
 function hasCategory(Cancion $song): bool
