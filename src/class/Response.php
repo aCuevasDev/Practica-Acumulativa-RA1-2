@@ -23,9 +23,16 @@ class Response
         return $this;
     }
 
-    public function body(mixed $body): self
+    public function append(mixed $body): self
     {
         $this->body = $this->body . $body;
+
+        return $this;
+    }
+
+    public function body(mixed $body): self
+    {
+        $this->body = $body;
 
         return $this;
     }

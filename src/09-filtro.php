@@ -9,12 +9,6 @@ $category = $_GET['category'] ?? 'all';
 //$allowed = ['todas', 'electronica', 'rock', 'bandas-sonoras'];
 $allowed = ['all', 'electronic', 'rock', 'soundtrack'];
 
-// TODO SWITCH??
-// if (!is_a($category, 'string')) {
-//     $httpCode = 400;
-//     $filteredSongs = [];
-// } else 
-
 $httpCode = 400;
 $filteredSongs = [];
 
@@ -30,7 +24,7 @@ if (is_string($category)) {
 
 Response::make()
     ->status($httpCode)
-    ->body(['songs' => $filteredSongs])
+    ->append(['songs' => $filteredSongs])
     ->send();
 
 
