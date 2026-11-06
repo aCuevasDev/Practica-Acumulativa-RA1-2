@@ -3,4 +3,4 @@ Tampoco versiono nada dentro de [docker/src](docker/src/) porque no me gusta la 
 
 # Sync-docker.bat
 
-Para poder ejecutar la aplicación primero ejecuta [sync-docker.bat](sync-docker.bat) para sincronizar [songs.json](songs.json) y src dentro de la prácticaJS y la carpeta docker
+~~Para poder ejecutar la aplicación primero ejecuta~~ (Ya no debería hacer falta porque he apuntado el compose a la src/ raíz) [sync-docker.bat](sync-docker.bat) para sincronizar [songs.json](songs.json) y src dentro de la prácticaJS y la carpeta docker

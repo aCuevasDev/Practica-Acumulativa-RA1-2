@@ -1,0 +1,72 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="q6wOky26Fs9n11vvxZxK">
+    <mxGraphModel dx="2054" dy="1103" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="knU6FPxD59-UxWnCsDcw-5" edge="1" parent="1" source="knU6FPxD59-UxWnCsDcw-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="knU6FPxD59-UxWnCsDcw-4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-20" edge="1" parent="1" source="knU6FPxD59-UxWnCsDcw-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="knU6FPxD59-UxWnCsDcw-19" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="ORDENADOR&amp;nbsp;&lt;br&gt;SRC/" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="525" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-16" edge="1" parent="1" source="knU6FPxD59-UxWnCsDcw-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="knU6FPxD59-UxWnCsDcw-15" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="BROWSER" vertex="1">
+          <mxGeometry height="60" width="120" x="80" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-12" edge="1" parent="1" source="knU6FPxD59-UxWnCsDcw-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="knU6FPxD59-UxWnCsDcw-11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="CONTENEDOR" vertex="1">
+          <mxGeometry height="60" width="120" x="480" y="525" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-7" edge="1" parent="1" source="knU6FPxD59-UxWnCsDcw-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="knU6FPxD59-UxWnCsDcw-3" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="555" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-4" parent="1" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.4;rounded=0;" value="Crea el contenedor a partir de la imagen y compose" vertex="1">
+          <mxGeometry height="132.5" width="180" x="250" y="488.75" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-27" edge="1" parent="1" source="knU6FPxD59-UxWnCsDcw-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="knU6FPxD59-UxWnCsDcw-26" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="APACHE" vertex="1">
+          <mxGeometry height="60" width="120" x="480" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-13" edge="1" parent="1" source="knU6FPxD59-UxWnCsDcw-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="knU6FPxD59-UxWnCsDcw-8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-11" parent="1" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.4;rounded=0;rotation=0;" value="Contiene un server&lt;br&gt;Mapea el puerto 80 del contenedor al 8090 del ordenador" vertex="1">
+          <mxGeometry height="150" width="160" x="460" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-18" edge="1" parent="1" source="knU6FPxD59-UxWnCsDcw-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="knU6FPxD59-UxWnCsDcw-8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-15" parent="1" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.4;rounded=0;" value="Realiza petición HTTP al puerto 8090" vertex="1">
+          <mxGeometry height="132.5" width="140" x="274" y="173.75" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-21" edge="1" parent="1" source="knU6FPxD59-UxWnCsDcw-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="knU6FPxD59-UxWnCsDcw-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-19" parent="1" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.4;rounded=0;" value="Usa" vertex="1">
+          <mxGeometry height="60" width="80" x="80" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-25" edge="1" parent="1" source="knU6FPxD59-UxWnCsDcw-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" target="knU6FPxD59-UxWnCsDcw-2" value="">
+          <mxGeometry relative="1" x="-0.6538" as="geometry">
+            <mxPoint x="500" y="100" as="sourcePoint" />
+            <mxPoint x="420" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="knU6FPxD59-UxWnCsDcw-26" parent="1" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.4;rounded=0;" value="Ejecuta el PHP y devuelve la respuesta HTTP" vertex="1">
+          <mxGeometry height="132.5" width="170" x="455" y="33" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
