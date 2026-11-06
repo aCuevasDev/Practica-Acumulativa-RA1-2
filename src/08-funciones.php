@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . "/07-catalogo.php");
+require_once(__DIR__ . "/services/read-json.php");
 
 function duracionLegible(int $total): string
 {
@@ -14,4 +14,4 @@ function duracionLegible(int $total): string
 
 echo duracionLegible(185);
 
-// echo ($songs[0]->duracionLegible());
+echo "Duración de otra canción desde la clase Cancion.php: " . ($songs[0]->duracionLegible());

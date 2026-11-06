@@ -3,11 +3,17 @@
 require_once(__DIR__ . "/services/read-json.php");
 
 
+
 foreach ($songs as $song) {
-    var_dump($song->get_associative_array());
+    // var_dump($song->get_associative_array());
+    $catalogo[] = $song->get_associative_array();
 }
 
 
 if (empty($songs)) {
     echo 'Todavía no hay canciones';
 }
+$response = Response::make()
+    ->status(200)
+    ->body(['songs' => $catalogo])
+    ->send();

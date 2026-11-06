@@ -16,7 +16,7 @@ $json = file_get_contents($JSON_SRC);
 // $songs = json_decode(mockJson, true);
 
 try {
-    $json = json_decode($json, true, JSON_THROW_ON_ERROR);
+    $json = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
 
     /** @var Cancion[] $songs */
     $songs = [];
@@ -24,9 +24,10 @@ try {
     foreach ($json['songs'] as $songData) {
         $songs[] = new Cancion(json_encode($songData, JSON_THROW_ON_ERROR));
     }
-} catch (Exception $e) {
+} catch (JsonException $e) {
     // No me gusta devolver a la vista en un servicio pero como tenemos una estructura tan dispersa y php no lanza errores para unchecked exceptions creo que será mejor así
     Response::make()
-                ->body("Error al leer el json: ". $e->getMessage())
-                ->send();
+        ->status(400)
+        ->append("Error al leer el json: " . $e->getMessage())
+        ->send();
 }
