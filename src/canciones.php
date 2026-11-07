@@ -71,12 +71,12 @@ function song_duration(array $song): string
                         <a href="cancion-editar.php?id=<?= urlencode($id) ?>">Editar</a>
                         <form action="cancion-eliminar.php" method="post">
                             <input type="hidden" name="id" value="<?= htmlspecialchars($id, ENT_QUOTES, 'UTF-8') ?>">
+                            <?= csrf_field() ?>
                             <button type="submit">Eliminar</button>
                         </form>
                     </div>
                 </li>
             <?php endforeach; ?>
-            <?= csrf_field() ?>
         </ul>
     <?php endif; ?>
 </body>
