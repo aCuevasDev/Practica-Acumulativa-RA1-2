@@ -173,6 +173,10 @@ button[type="submit"]:focus-visible {
   outline-offset: 3px;
 }
 
+a {
+  color: var(--text);
+}
+
 /* ---------- Small screens ---------- */
 
 @media (max-width: 480px) {
