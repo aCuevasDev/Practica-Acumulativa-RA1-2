@@ -5,13 +5,7 @@ require_once(__DIR__ . "/../class/Response.php");
 $JSON_SRC = __DIR__ . "/../PracticaJS/Practica2/songs.json";
 
 
-// $mockJson = array(
-//     "id" => "1",
-//     "name" => "song",
-//     "author" => "dy",
-//     "file" => "/test/song",
-// );
-// $songs = json_decode(mockJson, true);
+// Deprectated, usamos fopen ahora en canciones.php. Lo mantengo para 07 y 12 catalogos
 
 try {
     $json = file_get_contents($JSON_SRC);

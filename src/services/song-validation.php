@@ -1,27 +1,76 @@
 <?php
-// no voy a reaprovechar 10-formulario.php porque lo hice para que devolviese una respuesta http como se pedía en el ejercicio y ahora se me pide que la toque otra vez y la adapte para validar 
-// y estoy cansado jefe, esto en realidad debería ir en el modelo de cancion pero ya me ha mareado tanto esta práctica que lo voy a dejar aquí
-require_once(dirname(__FILE__) . "/class/Cancion.php");
-require_once __DIR__ . '/class/Response.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = is_string($_POST['title']) ? trim($_POST['title']) : '';
-    $artist = is_string($_POST['artist']) ? trim($_POST['artist']) : '';
-    $category = is_string($_POST['category']) ? trim($_POST['category']) : '';
-    $duration = filter_var($_POST['duration'], FILTER_VALIDATE_INT) ? trim($_POST['duration']) : 0;
-    $src = is_string($_POST['src']) ? trim($_POST['src']) : '';
-} else {
-    return new Exception('Wrong request method');
+const ALLOWED_SONG_CATEGORIES = ['electronic', 'rock', 'soundtrack'];
+
+function validate_song(array $input): array
+{
+    $values = [
+        'title' => '',
+        'artist' => '',
+        'category' => '',
+        'duration' => '',
+        'src' => '',
+    ];
+    $errors = [];
+
+    $titleInput = $input['title'] ?? null;
+
+    if (!is_string($titleInput)) {
+        $errors[] = 'El título no es válido.';
+    } else {
+        $values['title'] = trim($titleInput);
+
+        if ($values['title'] === '') {
+            $errors[] = 'El título es obligatorio.';
+        } elseif (mb_strlen($values['title'], 'UTF-8') > 80) {
+            $errors[] = 'El título no puede superar los 80 caracteres.';
+        }
+    }
+
+    $artistInput = $input['artist'] ?? null;
+
+    if (!is_string($artistInput)) {
+        $errors[] = 'El artista no es válido.';
+    } else {
+        $values['artist'] = trim($artistInput);
+
+        if ($values['artist'] === '') {
+            $errors[] = 'El artista es obligatorio.';
+        }
+    }
+
+    $categoryInput = $input['category'] ?? null;
+    $category = is_string($categoryInput) ? trim($categoryInput) : '';
+
+    if (!in_array($category, ALLOWED_SONG_CATEGORIES, true)) {
+        $errors[] = 'La categoría no es válida.';
+    } else {
+        $values['category'] = $category;
+    }
+
+    $durationInput = $input['duration'] ?? null;
+
+    if (!is_string($durationInput)) {
+        $errors[] = 'La duración no es válida.';
+    } else {
+        $values['duration'] = trim($durationInput);
+        $duration = filter_var($values['duration'], FILTER_VALIDATE_INT);
+
+        if ($duration === false || $duration < 1 || $duration > 1800) {
+            $errors[] = 'La duración debe ser un entero entre 1 y 1800 segundos.';
+        } else {
+            $values['duration'] = $duration;
+        }
+    }
+
+    $srcInput = $input['src'] ?? null;
+    $src = is_string($srcInput) ? trim($srcInput) : '';
+    if ($src === '') {
+        $errors[] = 'El campo de audio no puede estar vacío';
+    }
+
+    return [
+        'values' => $values,
+        'errors' => $errors,
+    ];
 }
-
-if ((empty($title) || empty($artist) || empty($category))) {
-    return new Exception('Fields: title, artist and category must be valid and not empty');
-}
-
-if (!($duration > 0 && $duration < 1800)) {
-    return new Exception('Invalid duration :' . $duration . ' Must be between 0 and 1800');
-}
-
-$song = new Cancion()->populate_cancion(uniqid(), $title, $artist, $duration, 0, $src, $category);
-
-echo var_dump($song);
