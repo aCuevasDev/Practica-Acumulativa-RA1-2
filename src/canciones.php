@@ -69,11 +69,7 @@ function song_duration(array $song): string
                     <p><strong>Audio:</strong> <code><?= htmlspecialchars($file, ENT_QUOTES, 'UTF-8') ?></code></p>
                     <div class="song-actions">
                         <a href="cancion-editar.php?id=<?= urlencode($id) ?>">Editar</a>
-                        <form action="cancion-eliminar.php" method="post">
-                            <input type="hidden" name="id" value="<?= htmlspecialchars($id, ENT_QUOTES, 'UTF-8') ?>">
-                            <?= csrf_field() ?>
-                            <button type="submit">Eliminar</button>
-                        </form>
+                        <a class="delete-link" href="cancion-eliminar.php?id=<?= urlencode($id) ?>">Eliminar</a>
                     </div>
                 </li>
             <?php endforeach; ?>

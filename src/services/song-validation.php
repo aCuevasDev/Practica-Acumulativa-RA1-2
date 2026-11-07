@@ -2,6 +2,20 @@
 
 const ALLOWED_SONG_CATEGORIES = ['electronic', 'rock', 'soundtrack'];
 
+function validate_song_id(mixed $raw): ?int
+{
+    if (!is_string($raw)) {
+        return null;
+    }
+
+    $id = filter_var($raw, FILTER_VALIDATE_INT, [
+        'options' => ['min_range' => 1],
+    ]);
+
+    return $id === false ? null : $id;
+}
+
+
 function validate_song(array $input): array
 {
     $values = [
@@ -67,6 +81,8 @@ function validate_song(array $input): array
     $src = is_string($srcInput) ? trim($srcInput) : '';
     if ($src === '') {
         $errors[] = 'El campo de audio no puede estar vacío';
+    } else {
+        $values['src'] = $src;
     }
 
     return [

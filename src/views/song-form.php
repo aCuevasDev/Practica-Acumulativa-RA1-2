@@ -11,9 +11,12 @@ $values = $values ?? [
     'duration' => '',
     'src' => '',
 ];
+
+// Lo reutilizamos para el edit
 $formAction = $formAction ?? 'cancion_controller.php';
 $submitLabel = $submitLabel ?? 'Guardar canción';
 $formTitle = $formTitle ?? 'Añadir canción';
+$songId = $songId ?? null;
 
 $categoryLabels = [
     'electronic' => 'Electrónica',
@@ -34,6 +37,11 @@ $categoryLabels = [
 <body>
     <h1><?= htmlspecialchars($formTitle, ENT_QUOTES, 'UTF-8') ?></h1>
     <form action="<?= htmlspecialchars($formAction, ENT_QUOTES, 'UTF-8') ?>" method="post">
+        <?php if ($songId !== null): ?>
+            <input type="hidden" name="id"
+                value="<?= htmlspecialchars((string) $songId, ENT_QUOTES, 'UTF-8') ?>" />
+        <?php endif; ?>
+
         <?php if ($errors !== []): ?>
             <ul class="errors">
                 <?php foreach ($errors as $error): ?>
