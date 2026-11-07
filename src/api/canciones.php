@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/services/sesion.php';
 require_once dirname(__DIR__) . '/persistence/songs.php';
 require_once dirname(__DIR__) . '/class/Cancion.php';
 require_once dirname(__DIR__) . '/class/Response.php';

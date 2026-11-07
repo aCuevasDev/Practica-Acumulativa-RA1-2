@@ -4,7 +4,9 @@ import { initEqualizerControls } from "./equalizer.js";
 
 let songs;
 try {
-    const response = await fetch('../../api/canciones.php');
+    const response = await fetch('../../api/canciones.php', {
+        credentials: 'same-origin',
+    });
     if (!response.ok) {
         throw new Error(`Failed to load songs.json: ${response.status} ${response.statusText}`);
     }
