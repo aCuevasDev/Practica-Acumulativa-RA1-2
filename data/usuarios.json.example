@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "alias": "test@test.com",
+    "email": "test@test.com",
+    "password_hash": "$2y$12$gHZlzNCTyvR6U1gaUmKvI.zkIgCaDL8vXMS1d2pTpLUB9HinAnksu"
+  },
+  {
+    "id": 2,
+    "alias": "test2",
+    "email": "test2@test.com",
+    "password_hash": "$2y$12$LU6fVC7AKG.iHlPQ2ukcXu8\/4YGsXQOj\/CHP9QCCB9e9Lrz64H49K"
+  }
+]
