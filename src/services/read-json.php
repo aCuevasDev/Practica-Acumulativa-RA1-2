@@ -4,8 +4,6 @@ require_once(__DIR__ . "/../class/Response.php");
 
 $JSON_SRC = __DIR__ . "/../PracticaJS/Practica2/songs.json";
 
-$json = file_get_contents($JSON_SRC);
-
 
 // $mockJson = array(
 //     "id" => "1",
@@ -16,6 +14,7 @@ $json = file_get_contents($JSON_SRC);
 // $songs = json_decode(mockJson, true);
 
 try {
+    $json = file_get_contents($JSON_SRC);
     $json = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
 
     /** @var Cancion[] $songs */
