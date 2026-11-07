@@ -7,10 +7,9 @@ services:
     ports:
       - "8091:80"
     volumes:
-      - ../src:/var/www/html #practica pide ./src:/var/www/html pero no me gusta duplicar código, así que lo pongo relativo a docker
-      - ../data:/var/www/data #fuera del docroot para que usuarios.json no sea accesible por HTTP, se pedía también con songs.json pero como tengo la práctica de js metida dentro de src era más complejo de hacer
-    # data:
-    #   - ./data:/var/www/html/data
+      - ../src:/var/www/html #practica pide ./src:/var/www/html pero no me gusta duplicar código, así que lo pongo apuntando a raíz
+      - ../data:/var/www/data #fuera del docroot para que usuarios.json y songs.json no sean accesible por HTTP
+
     env_file:
       - .env
   mariadb:
