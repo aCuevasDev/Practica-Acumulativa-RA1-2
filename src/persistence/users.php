@@ -1,7 +1,11 @@
 <?php
-//$JSON_SRC = "/var/www/data/" . "usuarios.json";
-//TODO ADAPTAR read-json para poderle pasar un json cualquiera y que te devuelva la info
+//$JSON_SRC = "/var/www" . "/data/usuarios.json";
 $JSON_SRC = dirname(__DIR__, 2) . '/data/usuarios.json';
+
+// Si no existe se genera uno vacío
+if (!file_exists($JSON_SRC)) {
+    file_put_contents($JSON_SRC, '');
+}
 
 function create_user(string $alias, string $email, string $password): array
 {
