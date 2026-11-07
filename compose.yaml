@@ -6,3 +6,4 @@ services:
       - "8090:80"
     volumes:
       - ./src:/var/www/html
+      - ./data:/var/www/data #fuera del docroot para que usuarios.json y songs.json no sean accesible por HTTP
