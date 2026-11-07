@@ -53,7 +53,19 @@ a {
 
 .catalog-header nav {
   display: flex;
+  align-items: center;
   gap: 16px;
+}
+
+.catalog-header nav .play-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.play-link svg {
+  width: 18px;
+  height: 18px;
 }
 
 .song-list {

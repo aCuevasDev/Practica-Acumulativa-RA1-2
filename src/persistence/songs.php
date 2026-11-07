@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__DIR__) . "/class/Cancion.php");
-$SONGS_JSON_SRC = dirname(__DIR__) . '/PracticaJS/Practica2/songs.json';
+$SONGS_JSON_SRC = dirname(__DIR__, 2) . '/data/songs.json';
 
 
 function create_song(Cancion $song): array

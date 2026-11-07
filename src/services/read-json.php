@@ -2,7 +2,7 @@
 require_once(__DIR__ . "/../class/Cancion.php");
 require_once(__DIR__ . "/../class/Response.php");
 
-$JSON_SRC = __DIR__ . "/../PracticaJS/Practica2/songs.json";
+$JSON_SRC = dirname(__DIR__, 2) . "data/songs.json";
 
 
 // Deprectated, usamos fopen ahora en canciones.php. Lo mantengo para 07 y 12 catalogos

@@ -42,6 +42,12 @@ function song_duration(array $song): string
         <nav>
             <a href="home.php">Inicio</a>
             <a href="cancion_controller.php">Añadir canción</a>
+            <a class="play-link" href="PracticaJS/Practica2/index.html" aria-label="Ir al reproductor">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                </svg>
+                Reproductor
+            </a>
         </nav>
     </header>
 
