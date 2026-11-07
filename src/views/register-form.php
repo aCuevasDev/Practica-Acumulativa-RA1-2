@@ -15,12 +15,12 @@ $email = $email ?? '';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Crear cuenta</title>
-    <link rel="stylesheet" href="assets/form.css" />
+    <link rel="stylesheet" href="../assets/form.css" />
 </head>
 
 <body>
     <h1>Crear cuenta</h1>
-    <form action="register.php" method="post">
+    <form action="../register.php" method="post">
         <?php if ($errors !== []): ?>
             <ul class="errors">
                 <?php foreach ($errors as $error): ?>
@@ -41,13 +41,12 @@ $email = $email ?? '';
         </p>
         <p>
             <label for="password">Contraseña:</label><br />
-            <input type="password" id="password" name="password" minlength="12" maxlength="64"
-                autocomplete="new-password" required />
+            <input type="password" id="password" name="password" minlength="12" maxlength="64" required />
         </p>
         <p>
             <label for="password_confirm">Repite la contraseña:</label><br />
             <input type="password" id="password_confirm" name="password_confirm" minlength="12" maxlength="64"
-                autocomplete="new-password" required />
+                required />
         </p>
 
         <?= csrf_field() ?>

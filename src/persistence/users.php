@@ -1,6 +1,7 @@
 <?php
 //$JSON_SRC = "/var/www/data/" . "usuarios.json";
-$JSON_SRC = dirname(__DIR__) . '/data/usuarios.json';
+//TODO ADAPTAR read-json para poderle pasar un json cualquiera y que te devuelva la info
+$JSON_SRC = dirname(__DIR__, 2) . '/data/usuarios.json';
 function create_user(string $alias, string $email, string $password): array
 {
     global $JSON_SRC;
@@ -40,8 +41,9 @@ function create_user(string $alias, string $email, string $password): array
             $users,
             JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR
         );
+        file_put_contents($JSON_SRC, $json, JSON_THROW_ON_ERROR);
     } catch (JsonException $e) {
-        return ['No se pudo preparar el registro.'];
+        return ['No se pudo registrar el usuario.'];
     }
 
 
