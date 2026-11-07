@@ -28,13 +28,7 @@ function create_user(string $alias, string $email, string $password): array
             return ['No se pudo leer el almacén de usuarios.'];
         }
 
-        $users = trim($json) === ''
-            ? []
-            : json_decode($json, true, 512, JSON_THROW_ON_ERROR);
-
-        if (!is_array($users) || !array_is_list($users)) {
-            return ['El almacén de usuarios no tiene un formato válido.'];
-        }
+        $users = trim($json) === '' ? [] : decode_json($json);
 
         if (email_exists($users, $email)) {
             return ['Ese correo ya está registrado.'];
@@ -75,7 +69,7 @@ function create_user(string $alias, string $email, string $password): array
         if (!fflush($handle)) {
             return ['No se pudo volcar el almacén de usuarios a disco.'];
         }
-    } catch (JsonException $e) {
+    } catch (JsonException | UnexpectedValueException $e) {
         return ['No se pudo procesar el almacén de usuarios.'];
     } finally {
         if ($locked) {
@@ -89,15 +83,73 @@ function create_user(string $alias, string $email, string $password): array
 }
 
 
-function email_exists(array $users, string $email): bool
+function read_users(): array
+{
+    global $JSON_SRC;
+
+    $handle = @fopen($JSON_SRC, 'rb');
+
+    if ($handle === false) {
+        throw new RuntimeException('No se pudo abrir el almacén de usuarios.');
+    }
+
+    $locked = false;
+
+    try {
+        if (!flock($handle, LOCK_SH)) {
+            throw new RuntimeException('No se pudo bloquear el almacén de usuarios.');
+        }
+
+        $locked = true;
+
+        $json = stream_get_contents($handle);
+
+        if ($json === false) {
+            throw new RuntimeException('No se pudo leer el almacén de usuarios.');
+        }
+
+        if (trim($json) === '') {
+            return [];
+        }
+
+        return decode_json($json);
+    } finally {
+        if ($locked) {
+            flock($handle, LOCK_UN);
+        }
+
+        fclose($handle);
+    }
+}
+
+
+function decode_json(string $json): array
+{
+    $users = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+
+    if (!is_array($users) || !array_is_list($users)) {
+        throw new UnexpectedValueException('El almacén de usuarios no tiene un formato válido.');
+    }
+
+    return $users;
+}
+
+
+function find_user_by_email(array $users, string $email): ?array
 {
     foreach ($users as $user) {
         if (is_array($user) && strtolower((string) ($user['email'] ?? '')) === $email) {
-            return true;
+            return $user;
         }
     }
 
-    return false;
+    return null;
+}
+
+
+function email_exists(array $users, string $email): bool
+{
+    return find_user_by_email($users, $email) !== null;
 }
 
 
