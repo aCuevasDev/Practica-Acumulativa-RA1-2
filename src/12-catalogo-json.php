@@ -1,6 +1,7 @@
 <?php
 // Ya había cargado el json antes usando el service que hice así que no tiene la estructura/nombre que pides
 require_once(__DIR__ . "/services/read-json.php");
+require_once(__DIR__ . "/services/acceso.php");
 
 
 
@@ -13,7 +14,7 @@ foreach ($songs as $song) {
 if (empty($songs)) {
     echo 'Todavía no hay canciones';
 }
-$response = Response::make()
+Response::make()
     ->status(200)
     ->body(['songs' => $catalogo])
     ->send();

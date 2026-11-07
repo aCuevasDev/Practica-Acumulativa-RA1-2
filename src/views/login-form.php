@@ -33,7 +33,7 @@ $email = $email ?? '';
         </p>
         <p>
             <label for="password">Contraseña:</label><br />
-            <input type="password" id="password" name="password" autocomplete="current-password" required />
+            <input type="password" id="password" name="password" required />
         </p>
 
         <?= csrf_field() ?>

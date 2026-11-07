@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/services/acceso.php';
 require_once(__DIR__ . "/services/read-json.php");
 
 foreach ($songs as $index => $song) {
