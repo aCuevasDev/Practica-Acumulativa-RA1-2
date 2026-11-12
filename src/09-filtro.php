@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . "/services/read-json.php");
-require_once __DIR__ . '/class/Response.php';
+require_once __DIR__ . '/class/ResponseBuilder.php';
 
 /** @var Cancion[] $songs */
 //$songs;
@@ -22,7 +22,7 @@ if (is_string($category)) {
     }
 }
 
-Response::make()
+ResponseBuilder::make()
     ->status($httpCode)
     ->append(['songs' => $filteredSongs])
     ->send();

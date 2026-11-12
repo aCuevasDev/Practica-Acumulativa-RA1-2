@@ -1,10 +1,10 @@
 <?php
 require_once(__DIR__ . "/services/postgres-service.php");
 require_once(__DIR__ . "/services/mariadb-service.php");
-require_once(__DIR__ . "/class/Response.php");
+require_once(__DIR__ . "/class/ResponseBuilder.php");
 
 
-$response = Response::make();
+$response = ResponseBuilder::make();
 $err = false;
 try {
     $mariadb_service = new MariadbService();

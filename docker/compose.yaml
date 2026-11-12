@@ -6,10 +6,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8091:80"
-    # volumes:
-    # deprecated. binding made requests to files very slow
-    #  - ../src:/var/www/html #practica pide ./src:/var/www/html pero no me gusta duplicar código, así que lo pongo apuntando a raíz
-    #  - ../data:/var/www/data #fuera del docroot para que usuarios.json y songs.json no sean accesible por HTTP
+    volumes:
+      # deprecated. binding made requests to files very slow
+      - ../src:/var/www/html #practica pide ./src:/var/www/html pero no me gusta duplicar código, así que lo pongo apuntando a raíz
+      - ../data:/var/www/data #fuera del docroot para que usuarios.json y songs.json no sean accesible por HTTP
 
     env_file:
       - .env

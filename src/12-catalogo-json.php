@@ -14,7 +14,7 @@ foreach ($songs as $song) {
 if (empty($songs)) {
     echo 'Todavía no hay canciones';
 }
-Response::make()
+ResponseBuilder::make()
     ->status(200)
     ->body(['songs' => $catalogo])
     ->send();

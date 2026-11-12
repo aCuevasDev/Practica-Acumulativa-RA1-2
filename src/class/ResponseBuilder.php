@@ -1,6 +1,6 @@
 <?php
 
-class Response
+class ResponseBuilder
 {
     private int $statusCode = 200;
     private mixed $body = '';
@@ -10,6 +10,13 @@ class Response
     public static function make(): self
     {
         return new self();
+    }
+
+    public static function from(JSONResponse $response): never
+    {
+        $builder = new self();
+        $builder->body = json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        $builder->send();
     }
 
     public function status(int $statusCode): self
@@ -26,7 +33,7 @@ class Response
     public function append(mixed $body): self
     {
         $this->body = $this->body . $body;
-
+        
         return $this;
     }
 
@@ -66,5 +73,19 @@ class Response
         );
 
         exit;
+    }
+}
+
+
+class JSONResponse
+{
+    public $ok;
+    public $error_message;
+    public $data;
+    public function __construct(bool $ok, mixed $data, string $error_message = '')
+    {
+        $this->ok = $ok;
+        $this->data = json_encode($data);
+        $this->error_message = $error_message;
     }
 }

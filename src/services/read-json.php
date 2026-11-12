@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . "/../class/Cancion.php");
-require_once(__DIR__ . "/../class/Response.php");
+require_once(__DIR__ . "/../class/ResponseBuilder.php");
 
 $JSON_SRC = dirname(__DIR__, 2) . "/data/songs.json";
 
@@ -19,7 +19,7 @@ try {
     }
 } catch (JsonException $e) {
     // No me gusta devolver a la vista en un servicio pero como tenemos una estructura tan dispersa y php no lanza errores para unchecked exceptions creo que será mejor así
-    Response::make()
+    ResponseBuilder::make()
         ->status(400)
         ->append("Error al leer el json: " . $e->getMessage())
         ->send();
