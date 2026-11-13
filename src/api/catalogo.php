@@ -19,7 +19,9 @@ require_once dirname(__DIR__) . '/class/ResponseBuilder.php';
 }
  if (strcasecmp($action,'create') && strcasecmp($method,'POST'))
 { 
-    // TODO
+    $song = new Cancion()->populate_cancion(null, $_POST['title'], $_POST['artist'], $_POST['duration'], 100, $_POST['src'], $_POST['category']);
+    validate_song($song); // TODO finish validations
+    create_songs_and_response($song)
 }
   if (strcasecmp($action,'update') && strcasecmp($method,'POST')) // WHY NOT PUT
 { 
@@ -48,6 +50,25 @@ function read_songs_and_response()
             ->status(500)
             ->body($json_response)
             ->send();
+    }
+}
+
+function create_songs_and_response(Cancion $song)
+{
+    try {
+        $songs = create_song($song);
+        $song = end($songs);
+        $json_response = new JSONResponse(true, $song);
+        ResponseBuilder::make()
+                        ->status(200)
+                        ->body($json_response)
+                        ->send();
+    } catch (Exception $e) {
+        $json_response = new JSONResponse(false, null, 'Error al crear la canción: ' . $e->getMessage());
+        ResponseBuilder::make()
+        ->status(500)
+        ->body($json_response)
+        ->send();
     }
 }
 
